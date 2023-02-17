@@ -1,143 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B3294E28-2BD4-4E39-92FA-E04A620C7E7F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LiveSplit.HollowKnight</RootNamespace>
-    <AssemblyName>LiveSplit.HollowKnight</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <LangVersion>latest</LangVersion>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>
-    </StartupObject>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>HollowKnight.ico</ApplicationIcon>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Info|AnyCPU'">
-    <OutputPath>bin\</OutputPath>
-    <DefineConstants>TRACE;Info</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-  </PropertyGroup>
-  
-  <PropertyGroup>
-    <LiveSplitRefs>..\..\LiveSplit</LiveSplitRefs>
-  </PropertyGroup>
-  <Import Project="LocalBuildProperties.props" Condition="Exists('LocalBuildProperties.props')" />
-  <!--Make a file LocalBuildProperties.props in this directory with the following content
-<Project>
-  <PropertyGroup>
-    <LiveSplitRefs>Livesplit/directory/goes/here</LiveSplitRefs>
-  </PropertyGroup>
-</Project>
-  -->
-  
+
   <ItemGroup>
-    <Reference Include="LiveSplit.Core">
-      <HintPath>$(LiveSplitRefs)\LiveSplit.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UpdateManager">
-      <HintPath>$(LiveSplitRefs)\UpdateManager.dll</HintPath>
-    </Reference>
+    <!-- https://github.com/dotnet/runtimelab/issues/2121 -->
+    <PackageReference
+      Include="Microsoft.DotNet.ILCompiler.LLVM; runtime.win-x64.Microsoft.DotNet.ILCompiler.LLVM"
+      Version="7.0.0-preview.5.23113.1" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="EnemyInfo.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="HollowKnightComponent.cs" />
-    <Compile Include="HollowKnightFactory.cs" />
-    <Compile Include="HollowKnightInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HollowKnightInfo.Designer.cs">
-      <DependentUpon>HollowKnightInfo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HollowKnightMemory.cs" />
-    <Compile Include="HollowKnightStoredData.cs" />
-    <Compile Include="MemoryReader.cs" />
-    <Compile Include="HollowKnightSettings.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="HollowKnightSettings.Designer.cs">
-      <DependentUpon>HollowKnightSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HollowKnightSplitSettings.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="HollowKnightSplitSettings.Designer.cs">
-      <DependentUpon>HollowKnightSplitSettings.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProgramPointer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="HollowKnightInfo.resx">
-      <DependentUpon>HollowKnightInfo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HollowKnightSettings.resx">
-      <DependentUpon>HollowKnightSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HollowKnightSplitSettings.resx">
-      <DependentUpon>HollowKnightSplitSettings.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Components\LiveSplit.HollowKnight.dll" />
+    <!-- <Content Include="Components\LiveSplit.HollowKnight.dll" />
     <Content Include="Components\LiveSplit.HollowKnight.Updates.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="HollowKnight.ico" />
+    <Content Include="HollowKnight.ico" /> -->
     <EmbeddedResource Include="PlayerData\V1568.txt" />
     <EmbeddedResource Include="PlayerData\V1424.txt" />
     <EmbeddedResource Include="PlayerData\V1315.txt" />
@@ -147,18 +28,5 @@
     <EmbeddedResource Include="PlayerData\Original.txt" />
     <EmbeddedResource Include="PlayerData\V1032.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="README.md" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(ProjectDir)Components\$(TargetFileName)"</PostBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
